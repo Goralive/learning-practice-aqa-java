@@ -12,7 +12,4 @@ public abstract class AbstractPage extends WebDriverTestBase {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);
     }
-
-    public AbstractPage() {
-    }
 }

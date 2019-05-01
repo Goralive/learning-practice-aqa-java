@@ -8,19 +8,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.facebook.FacebookLoginPage;
-import pages.ukranianbanks.*;
 
 public class WebDriverTestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected FacebookLoginPage facebookLoginPage;
     protected ChromeOptions options;
-    protected PrivatBank privatBank;
-    protected UkrSibBank ukrSibBank;
-    protected UniversalBank universalBank;
-    protected OshadBank oshadBank;
-    protected NationalBank nationalBank;
+
 
     @Before
     public void setUp() {
@@ -29,12 +22,6 @@ public class WebDriverTestBase {
         driver = new ChromeDriver(options);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-        facebookLoginPage = new FacebookLoginPage(driver);
-        privatBank = new PrivatBank(driver);
-        ukrSibBank = new UkrSibBank(driver);
-        universalBank = new UniversalBank(driver);
-        oshadBank = new OshadBank(driver);
-        nationalBank = new NationalBank(driver);
 
     }
 

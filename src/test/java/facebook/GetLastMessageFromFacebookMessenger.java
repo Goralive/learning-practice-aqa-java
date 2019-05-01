@@ -2,13 +2,15 @@ package facebook;
 
 import core.WebDriverTestBase;
 import net.serenitybdd.junit.runners.SerenityRunner;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import pages.facebook.FacebookLoginPage;
 import pages.facebook.FacebookUserPage;
 
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SerenityRunner.class)
+
 public class GetLastMessageFromFacebookMessenger extends WebDriverTestBase {
 
     //TODO make cucumber scenario
@@ -23,6 +25,14 @@ public class GetLastMessageFromFacebookMessenger extends WebDriverTestBase {
      * 7. Get the text of the last message (the most recent)
      * 8. Print the last message to the console.
      */
+
+    private FacebookLoginPage facebookLoginPage;
+
+    @Before
+    public void setUpPages (){
+        facebookLoginPage = new FacebookLoginPage(driver);
+    }
+
     @Test
     public void getLastMessage() {
         facebookLoginPage.openFacebookLogIn("https://www.facebook.com");

@@ -1,9 +1,5 @@
 package pages.ukranianbanks;
 
-
-import org.openqa.selenium.WebDriver;
-import pages.AbstractPage;
-
 import java.util.Arrays;
 
 public class CurrencyCalculation {
