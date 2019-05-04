@@ -1,14 +1,11 @@
-package currency;
+package pages.ukranianbanks;
 
 import core.WebDriverTestBase;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import pages.ukranianbanks.*;
 
-import java.util.Arrays;
-
-public class BankCurrentCurrency extends WebDriverTestBase {
+public class BankCurrentCurrencyTest extends WebDriverTestBase {
 
 
     /**
@@ -24,6 +21,7 @@ public class BankCurrentCurrency extends WebDriverTestBase {
     private UniversalBank universalBank;
     private OshadBank oshadBank;
     private NationalBank nationalBank;
+    private CurrencyCalculation currencyCalculation;
 
     @Before
     public void setUpPages () {
@@ -32,6 +30,7 @@ public class BankCurrentCurrency extends WebDriverTestBase {
         universalBank = new UniversalBank(driver);
         oshadBank = new OshadBank(driver);
         nationalBank = new NationalBank(driver);
+        currencyCalculation = new CurrencyCalculation();
     }
 
     @Test
@@ -41,7 +40,6 @@ public class BankCurrentCurrency extends WebDriverTestBase {
         universalBank.getUSDCurrencyValue();
         oshadBank.getUSDCurrency();
         nationalBank.getUSDCurencyValue();
-        CurrencyCalculation currencyCalculation = new CurrencyCalculation();
         currencyCalculation.highestSellingRatePrint(privatBank.getUsdPrivatSell(), ukrSibBank.getUsdUrkSibSell(), universalBank.getUsdMonoSell(), oshadBank.getUsdOshadSell(), nationalBank.getNationalBankUSDSell());
         currencyCalculation.lowestUSDPurchasePrint(privatBank.getUsdPrivatBuy(), ukrSibBank.getUsdUrkSibBuy(), universalBank.getUsdMonoBuy(), oshadBank.getUsdOshadBuy());
 

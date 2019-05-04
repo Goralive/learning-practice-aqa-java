@@ -1,17 +1,13 @@
-package facebook;
+package pages.facebook;
 
 import core.WebDriverTestBase;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import pages.facebook.FacebookLoginPage;
 import pages.facebook.FacebookUserPage;
 
-import static org.junit.Assert.assertTrue;
 
-
-public class GetLastMessageFromFacebookMessenger extends WebDriverTestBase {
+public class GetLastMessageFromFacebookMessengerTest extends WebDriverTestBase {
 
     //TODO make cucumber scenario
 
@@ -36,10 +32,8 @@ public class GetLastMessageFromFacebookMessenger extends WebDriverTestBase {
     @Test
     public void getLastMessage() {
         facebookLoginPage.openFacebookLogIn("https://www.facebook.com");
-        assertTrue(driver.getCurrentUrl().contains("facebook".toLowerCase()));
         FacebookUserPage facebookUserPage = facebookLoginPage.enterCredsForFacebookAccount("will14ka@gmail.com", "QA14DAXX");
         facebookUserPage.profileLoading();
-        assertTrue(driver.getTitle().toLowerCase().contains("facebook"));
         facebookUserPage.getLastMessege();
     }
 }

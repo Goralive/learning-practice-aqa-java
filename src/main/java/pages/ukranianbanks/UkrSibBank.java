@@ -33,8 +33,8 @@ public class UkrSibBank extends AbstractPage {
         usdUrkSibBuy = Double.valueOf(usdCurrencySibList.get(1).getText());
         usdUrkSibSell = Double.valueOf(usdCurrencySibList.get(2).getText());
 
-        System.out.println("Get USD currency from UrkSib buy: " + usdUrkSibBuy);
-        System.out.println("Get USD currency from UrkSib sell: " + usdUrkSibSell);
+        System.out.println("Get USD ukranianbanks from UrkSib buy: " + usdUrkSibBuy);
+        System.out.println("Get USD ukranianbanks from UrkSib sell: " + usdUrkSibSell);
         System.out.println("-----------");
     }
 }

@@ -30,8 +30,8 @@ public class PrivatBank extends AbstractPage {
 
         usdPrivatBuy = Double.valueOf(usdCurrencyPrivat.getText().substring(0,6));
         usdPrivatSell = Double.valueOf(usdCurrencyPrivat.getText().substring(9,15));
-        System.out.println("USD currency from privat buy: " + usdPrivatBuy);
-        System.out.println("USD currency from privat sell: "+ usdPrivatSell);
+        System.out.println("USD ukranianbanks from privat buy: " + usdPrivatBuy);
+        System.out.println("USD ukranianbanks from privat sell: "+ usdPrivatSell);
         System.out.println("-----------");
         return new PrivatBank(driver);
     }

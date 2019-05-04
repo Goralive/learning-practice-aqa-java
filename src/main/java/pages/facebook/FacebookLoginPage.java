@@ -8,6 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.AbstractPage;
 
+import static org.junit.Assert.assertTrue;
+
+
 public class FacebookLoginPage extends AbstractPage {
 
     @FindBy(css = "#email")
@@ -16,16 +19,16 @@ public class FacebookLoginPage extends AbstractPage {
     @FindBy(css = "#pass")
     WebElement passwordField;
 
-    @FindBy(css = "#u_0_2")
+    @FindBy(css = "[data-testid='royal_login_button']")
     WebElement logInButton;
 
     public FacebookLoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public FacebookLoginPage openFacebookLogIn(String url) {
+    public void openFacebookLogIn(String url) {
         driver.get(url);
-        return new FacebookLoginPage(driver);
+        assertTrue(driver.getTitle().toLowerCase().contains("facebook"));
     }
     public FacebookUserPage enterCredsForFacebookAccount(String mail, String pass) {
         emailField.clear();

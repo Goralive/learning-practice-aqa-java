@@ -29,8 +29,8 @@ public class UniversalBank extends AbstractPage {
         driver.get("https://www.universalbank.com.ua/");
         usdMonoBuy = Double.valueOf(usdBuyCurrencyMono.getText());
         usdMonoSell = Double.valueOf(usdBuyCurrencyMono.getText());
-        System.out.println("Get USD currency from MonoBank buy: " + usdMonoBuy);
-        System.out.println("Get USD currency from MonoBank sell: " + usdMonoSell);
+        System.out.println("Get USD ukranianbanks from MonoBank buy: " + usdMonoBuy);
+        System.out.println("Get USD ukranianbanks from MonoBank sell: " + usdMonoSell);
         System.out.println("-----------");
     }
 }
