@@ -53,7 +53,7 @@ public class MovieFromList extends AbstractPage {
     @FindBy(css = "span.subText a ~ a")
     WebElement webElementCriticsReview;
 
-    @FindAll(@FindBy(css = ".rec-title b"))
+    @FindAll(@FindBy(css = "div.rec_item img"))
     List<WebElement> listOfSimilarfilms;
 
     private int numberOfUserReview;
@@ -61,79 +61,80 @@ public class MovieFromList extends AbstractPage {
 
     public void getReleaseDate() {
         wait.until(ExpectedConditions.visibilityOf(webElementTitleOverview));
-        log.info("Release date: " + webElementTitleYear.getText());
+        log.info("Release date: {}", webElementTitleYear.getText());
         assertThat(webElementTitleYear.isDisplayed());
     }
 
     public void getDuration() {
         assertThat(webElementDuration.isDisplayed());
-        int duration = Integer.valueOf(webElementDuration.getText().replaceAll("\\D+", ""));
-        log.info("Duration in minutes: " + duration);
-        log.info("Duration in seconds: " + duration * 60);
+        int duration = Integer.parseInt(webElementDuration.getText().replaceAll("\\D+", ""));
+        log.info("Duration in minutes: {}", duration);
+        log.info("Duration in seconds: {}", duration * 60);
     }
 
     public void getMovieRating() {
         assertThat(webElementMovieRating.isDisplayed());
-        log.info("Movie rating: " + webElementMovieRating.getText());
+        log.info("Movie rating: {}", webElementMovieRating.getText());
     }
 
     public void getGenre() {
         assertThat(webElementGenre.isDisplayed());
-        log.info("Genre: " + webElementGenre.getText());
+        log.info("Genre: {}", webElementGenre.getText());
     }
 
     public void getURLTrailer() {
         assertThat(webElementTrailer.isDisplayed());
-        log.info("Link to the movie trailer: " + webElementTrailer.getAttribute("href"));
+        log.info("Link to the movie trailer: {}", webElementTrailer.getAttribute("href"));
     }
 
     public void getUrlPoster() {
         assertThat(webElementPoster.isDisplayed());
-        log.info("Link to the movie poster: " + webElementPoster.getAttribute("href"));
+        log.info("Link to the movie poster: {}", webElementPoster.getAttribute("href"));
     }
 
     public void getFilmDirectors() {
         assertThat(webElementFilmDirector.isDisplayed());
-        log.info("Film directors: " + webElementFilmDirector.getText());
+        log.info("Film directors: {}", webElementFilmDirector.getText());
     }
 
     public void getFiveActors() {
         if (assertThat(webElementGetFiveActors) != null) {
-            log.info("No actors was found");
-        } else {
             log.info("Here is the five actors: ");
-            for (int i = 0; i < 5; i++) {
-                log.info(webElementGetFiveActors.get(i).getText() + ", ");
+            for (int i = 1; i <= 5; i++) {
+                log.info("{}. {}", i, webElementGetFiveActors.get(i).getText());
             }
+
+        } else {
+            log.info("No actors was found");
+
         }
     }
 
     public void getMetaScore() {
         assertThat(webElementMetascore.isDisplayed());
-        log.info("Rating Metascore: " + webElementMetascore.getText());
+        log.info("Rating Metascore: {} ", webElementMetascore.getText());
     }
 
     public void getNumberUserReview() {
         assertThat(webElementUserReview.isDisplayed());
-        log.info("Number of user review: " + webElementUserReview.getText());
+        log.info("Number of user review: {}", webElementUserReview.getText());
         numberOfUserReview = Integer.valueOf(webElementUserReview.getText().replaceAll("\\D+", ""));
     }
 
     public void getNumberCriticsReview() {
         assertThat(webElementCriticsReview.isDisplayed());
-        log.info("Number of critics review: " + webElementCriticsReview.getText());
+        log.info("Number of critics review: {}", webElementCriticsReview.getText());
         numberOfCriticsReview = Integer.valueOf(webElementCriticsReview.getText().replaceAll("\\D+", ""));
     }
 
     public void numberOfReview() {
-        log.info("Amount of users and critics: " + (numberOfUserReview + numberOfCriticsReview));
+        log.info("Amount of users and critics: {}", (numberOfUserReview + numberOfCriticsReview));
     }
 
     public void getSimilarFilms() {
         log.info("Names of the 3 similar films: ");
         for (int i = 1; i <= 3; i++) {
-            log.info(i + "." + listOfSimilarfilms.get(i));
-
+            log.info("{}. {} ", i, listOfSimilarfilms.get(i).getAttribute("title"));
         }
     }
 }
