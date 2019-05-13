@@ -1,14 +1,11 @@
 package pages.facebook;
 
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Step;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.AbstractPage;
 
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.*;
 
 
 public class FacebookLoginPage extends AbstractPage {
@@ -28,7 +25,7 @@ public class FacebookLoginPage extends AbstractPage {
 
     public void openFacebookLogIn(String url) {
         driver.get(url);
-        assertTrue(driver.getTitle().toLowerCase().contains("facebook"));
+        assertThat(driver.getTitle().toLowerCase().contains("facebook")).isTrue();
     }
     public FacebookUserPage enterCredsForFacebookAccount(String mail, String pass) {
         emailField.clear();

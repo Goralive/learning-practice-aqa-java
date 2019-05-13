@@ -21,11 +21,12 @@ public class NationalBank extends AbstractPage {
     public void getUSDCurencyValue() {
         driver.get("https://www.bank.gov.ua/control/uk/curmetal/detail/currency?period=daily");
         nationalBankUSDSell = Math.round (((Double.valueOf(listWebElementValue.get(7).getText())) * 100.0)/ 100 )/ 100.0;
-        System.out.println("Get USD sell ukranianbanks from National bank: " + nationalBankUSDSell);
-        System.out.println("----------------------");
+        log.info("Get USD sell ukranianbanks from National bank: " + nationalBankUSDSell);
+        log.info("----------------------");
     }
 
     public double getNationalBankUSDSell() {
         return nationalBankUSDSell;
     }
+
 }

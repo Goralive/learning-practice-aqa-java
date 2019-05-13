@@ -1,10 +1,7 @@
 package pages.facebook;
 
 import core.WebDriverTestBase;
-import org.junit.Before;
-import org.junit.Test;
-import pages.facebook.FacebookLoginPage;
-import pages.facebook.FacebookUserPage;
+import org.testng.annotations.Test;
 
 
 public class GetLastMessageFromFacebookMessengerTest extends WebDriverTestBase {
@@ -24,13 +21,10 @@ public class GetLastMessageFromFacebookMessengerTest extends WebDriverTestBase {
 
     private FacebookLoginPage facebookLoginPage;
 
-    @Before
-    public void setUpPages (){
-        facebookLoginPage = new FacebookLoginPage(driver);
-    }
 
     @Test
     public void getLastMessage() {
+        facebookLoginPage = new FacebookLoginPage(driver);
         facebookLoginPage.openFacebookLogIn("https://www.facebook.com");
         FacebookUserPage facebookUserPage = facebookLoginPage.enterCredsForFacebookAccount("will14ka@gmail.com", "QA14DAXX");
         facebookUserPage.profileLoading();

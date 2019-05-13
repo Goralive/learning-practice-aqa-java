@@ -1,14 +1,14 @@
 package pages.imdbfilms;
 
 import core.WebDriverTestBase;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.Test;
+
 
 public class MovieInformationFromIMDBTest extends WebDriverTestBase {
     /**
      * Write a program that will display information about the film.
      * Link to the movie page: https://www.imdb.com/title/tt0111161/
-     *
+     * <p>
      * 1. The name of the film
      * 2. Release date
      * 3. The duration of the film in minutes. Duration of the film in seconds.
@@ -25,21 +25,24 @@ public class MovieInformationFromIMDBTest extends WebDriverTestBase {
 
     private MovieInformationFromIMDB informationFromIMDB;
 
-
-    @Before
-    public void setUpPages(){
-        informationFromIMDB = new MovieInformationFromIMDB(driver);
-    }
-
     @Test
-    public void getInformation () {
-      informationFromIMDB.openIMDB250Url("https://www.imdb.com/chart/top");
-      MovieFromList movie = informationFromIMDB.getMovieName(0);
-      movie.getReleaseDate();
-      movie.getDuration();
-      movie.getMovieRating();
-      movie.getGenre();
-      movie.getURLTrailer();
-      movie.getUrlPoster();
+    public void getInformation() {
+        informationFromIMDB = new MovieInformationFromIMDB(driver);
+
+        informationFromIMDB.openIMDB250Url("https://www.imdb.com/chart/top");
+        MovieFromList movie = informationFromIMDB.getMovieName(0);
+        movie.getReleaseDate();
+        movie.getDuration();
+        movie.getMovieRating();
+        movie.getGenre();
+        movie.getURLTrailer();
+        movie.getUrlPoster();
+        movie.getFilmDirectors();
+        movie.getFiveActors();
+        movie.getMetaScore();
+        movie.getNumberUserReview();
+        movie.getNumberCriticsReview();
+        movie.numberOfReview();
+        movie.getSimilarFilms();
     }
 }

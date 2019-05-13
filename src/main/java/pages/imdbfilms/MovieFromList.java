@@ -2,9 +2,15 @@ package pages.imdbfilms;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.AbstractPage;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
+
 
 public class MovieFromList extends AbstractPage {
     public MovieFromList(WebDriver driver) {
@@ -32,43 +38,104 @@ public class MovieFromList extends AbstractPage {
     @FindBy(css = ".poster a")
     WebElement webElementPoster;
 
+    @FindBy(css = "div.credit_summary_item > a:only-of-type")
+    WebElement webElementFilmDirector;
+
+    @FindAll(@FindBy(css = "td.primary_photo + td"))
+    List<WebElement> webElementGetFiveActors;
+
+    @FindBy(css = "div.metacriticScore > span")
+    WebElement webElementMetascore;
+
+    @FindBy(css = "span.subText a:nth-last-of-type(2)")
+    WebElement webElementUserReview;
+
+    @FindBy(css = "span.subText a ~ a")
+    WebElement webElementCriticsReview;
+
+    @FindAll(@FindBy(css = ".rec-title b"))
+    List<WebElement> listOfSimilarfilms;
+
+    private int numberOfUserReview;
+    private int numberOfCriticsReview;
+
     public void getReleaseDate() {
         wait.until(ExpectedConditions.visibilityOf(webElementTitleOverview));
-        System.out.println("Release date: " + webElementTitleYear.getText());
-
-        System.out.println("5 film actors: ");
-        System.out.println("Rating Metascore ");
-        System.out.println("Number of review for user ");
-        System.out.println("Number of review for critics ");
-        System.out.println("Number of review for user and critics ");
-        System.out.println("Names pf 3 similar films ");
+        log.info("Release date: " + webElementTitleYear.getText());
+        assertThat(webElementTitleYear.isDisplayed());
     }
 
     public void getDuration() {
+        assertThat(webElementDuration.isDisplayed());
         int duration = Integer.valueOf(webElementDuration.getText().replaceAll("\\D+", ""));
-        System.out.println("Duration in minutes: " + duration);
-        System.out.println("Duration in seconds: " + duration * 60);
+        log.info("Duration in minutes: " + duration);
+        log.info("Duration in seconds: " + duration * 60);
     }
 
     public void getMovieRating() {
-        System.out.println("Movie rating: " + webElementMovieRating.getText());
+        assertThat(webElementMovieRating.isDisplayed());
+        log.info("Movie rating: " + webElementMovieRating.getText());
     }
 
     public void getGenre() {
-        System.out.println("Genre: " + webElementGenre.getText());
+        assertThat(webElementGenre.isDisplayed());
+        log.info("Genre: " + webElementGenre.getText());
     }
 
     public void getURLTrailer() {
-        System.out.println("Link to the movie trailer: " + webElementTrailer.getAttribute("href"));
+        assertThat(webElementTrailer.isDisplayed());
+        log.info("Link to the movie trailer: " + webElementTrailer.getAttribute("href"));
     }
 
     public void getUrlPoster() {
-        System.out.println("Link to the movie poster: " + webElementPoster.getAttribute("href"));
+        assertThat(webElementPoster.isDisplayed());
+        log.info("Link to the movie poster: " + webElementPoster.getAttribute("href"));
     }
 
     public void getFilmDirectors() {
-        System.out.println("Film directors: ");
-
+        assertThat(webElementFilmDirector.isDisplayed());
+        log.info("Film directors: " + webElementFilmDirector.getText());
     }
 
+    public void getFiveActors() {
+        if (assertThat(webElementGetFiveActors) != null) {
+            log.info("No actors was found");
+        } else {
+            log.info("Here is the five actors: ");
+            for (int i = 0; i < 5; i++) {
+                log.info(webElementGetFiveActors.get(i).getText() + ", ");
+            }
+        }
+    }
+
+    public void getMetaScore() {
+        assertThat(webElementMetascore.isDisplayed());
+        log.info("Rating Metascore: " + webElementMetascore.getText());
+    }
+
+    public void getNumberUserReview() {
+        assertThat(webElementUserReview.isDisplayed());
+        log.info("Number of user review: " + webElementUserReview.getText());
+        numberOfUserReview = Integer.valueOf(webElementUserReview.getText().replaceAll("\\D+", ""));
+    }
+
+    public void getNumberCriticsReview() {
+        assertThat(webElementCriticsReview.isDisplayed());
+        log.info("Number of critics review: " + webElementCriticsReview.getText());
+        numberOfCriticsReview = Integer.valueOf(webElementCriticsReview.getText().replaceAll("\\D+", ""));
+    }
+
+    public void numberOfReview() {
+        log.info("Amount of users and critics: " + (numberOfUserReview + numberOfCriticsReview));
+    }
+
+    public void getSimilarFilms() {
+        log.info("Names of the 3 similar films: ");
+        for (int i = 1; i <= 3; i++) {
+            log.info(i + "." + listOfSimilarfilms.get(i));
+
+        }
+    }
 }
+
+

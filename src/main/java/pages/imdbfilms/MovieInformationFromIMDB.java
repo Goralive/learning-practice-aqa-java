@@ -1,6 +1,5 @@
 package pages.imdbfilms;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -10,7 +9,8 @@ import pages.AbstractPage;
 
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.*;
+
 
 public class MovieInformationFromIMDB extends AbstractPage {
 
@@ -22,16 +22,16 @@ public class MovieInformationFromIMDB extends AbstractPage {
     @FindAll(@FindBy(css = "td.titleColumn a"))
     List<WebElement> movieFromList;
 
-    public void openIMDB250Url (String url){
+    public void openIMDB250Url(String url) {
         driver.get(url);
-        assertTrue(driver.getTitle().toLowerCase().contains("imdb top 250"));
+        assertThat(driver.getTitle().toLowerCase().contains("imdb top 250"));
     }
 
     public MovieFromList getMovieName(int i) {
-        System.out.println("You have select movie: " + movieFromList.get(i).getText());
+        log.info("You have select movie: " + movieFromList.get(i).getText());
         wait.until(ExpectedConditions.visibilityOf(movieFromList.get(i)));
         movieFromList.get(i).click();
-        assertTrue(driver.getCurrentUrl().contains("top"));
-        return new MovieFromList (driver);
+        assertThat(driver.getCurrentUrl().contains("top"));
+        return new MovieFromList(driver);
     }
 }

@@ -1,6 +1,5 @@
 package pages.ukranianbanks;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -15,7 +14,7 @@ public class UkrSibBank extends AbstractPage {
         super(driver);
     }
 
-    @FindAll(@FindBy(css = "table.currency__table tbody td") )
+    @FindAll(@FindBy(css = "table.currency__table tbody td"))
     private List<WebElement> usdCurrencySibList;
 
     private double usdUrkSibBuy, usdUrkSibSell;
@@ -33,9 +32,9 @@ public class UkrSibBank extends AbstractPage {
         usdUrkSibBuy = Double.valueOf(usdCurrencySibList.get(1).getText());
         usdUrkSibSell = Double.valueOf(usdCurrencySibList.get(2).getText());
 
-        System.out.println("Get USD ukranianbanks from UrkSib buy: " + usdUrkSibBuy);
-        System.out.println("Get USD ukranianbanks from UrkSib sell: " + usdUrkSibSell);
-        System.out.println("-----------");
+        log.info("Get USD ukranianbanks from UrkSib buy: " + usdUrkSibBuy);
+        log.info("Get USD ukranianbanks from UrkSib sell: " + usdUrkSibSell);
+        log.info("-----------");
     }
 }
 

@@ -6,31 +6,26 @@ repositories {
     jcenter()
 }
 
-buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-    }
-    dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.1")
-    }
-}
 
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'net.serenity-bdd.aggregator'
 
 sourceCompatibility = 1.8
 
 
 dependencies {
-    compile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.testng', name: 'testng', version: '6.14.3'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.141.59'
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.4.0'
-    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '2.0.48'
-    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '2.0.48'
-    testCompile('org.assertj:assertj-core:1.7.0')
-    testCompile('org.slf4j:slf4j-simple:1.7.7')
+    compile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+}
+test {
+    useTestNG(){
+        useDefaultListeners = true
+        suites 'src/test/suite.xml'
+    }
 }
 gradle.startParameter.continueOnFailure = true 

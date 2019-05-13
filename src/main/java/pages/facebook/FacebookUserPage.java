@@ -26,16 +26,16 @@ public class FacebookUserPage extends AbstractPage {
         try {
             wait.until(ExpectedConditions.visibilityOf(postField));
         } catch (TimeoutException e) {
-            System.out.println("Locator isn't visible: " + e);
+            log.info("Locator isn't visible: " + e);
         }
         return true;
     }
 
-    public FacebookUserPage getLastMessege () {
+    public FacebookUserPage getLastMessege() {
         wait.until(ExpectedConditions.elementToBeClickable(messangerBtn));
         messangerBtn.click();
         wait.until(ExpectedConditions.visibilityOf(friendsMessages));
-        System.out.println(friendsMessages.getText());
+        log.info("The first message from messenger is: " + friendsMessages.getText());
 
         return new FacebookUserPage(driver);
     }
