@@ -14,7 +14,8 @@ public class PrivatBank extends AbstractPage {
     @FindBy(css = "div.section-content.rate")
     WebElement usdCurrencyPrivat;
 
-    private double usdPrivatSell, usdPrivatBuy;
+    private double usdPrivatSell;
+    private double usdPrivatBuy;
 
 
     public double getUsdPrivatSell() {
@@ -30,8 +31,8 @@ public class PrivatBank extends AbstractPage {
 
         usdPrivatBuy = Double.valueOf(usdCurrencyPrivat.getText().substring(0,6));
         usdPrivatSell = Double.valueOf(usdCurrencyPrivat.getText().substring(9,15));
-        log.info("USD ukranianbanks from privat buy: " + usdPrivatBuy);
-        log.info("USD ukranianbanks from privat sell: "+ usdPrivatSell);
+        log.info("USD ukranianbanks from privat buy: {}" , usdPrivatBuy);
+        log.info("USD ukranianbanks from privat sell: {}", usdPrivatSell);
         log.info("-----------");
         return new PrivatBank(driver);
     }

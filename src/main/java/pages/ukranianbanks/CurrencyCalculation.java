@@ -1,19 +1,29 @@
 package pages.ukranianbanks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 
 public class CurrencyCalculation {
 
-    public void lowestUSDPurchasePrint(double firstBank, double secondBank, double thirdBank, double fourBank) {
-        double[] usdBuyList = {firstBank, secondBank, thirdBank, fourBank};
-        Arrays.sort(usdBuyList);
-        System.out.println("The lowest pushare rate is: " + usdBuyList[0]);
+    private Logger log;
+
+    public CurrencyCalculation() {
+        this.log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     }
 
-    public void highestSellingRatePrint (double firstBank, double secondBank, double thirdBank, double fourBank, double fifthBank) {
+    public void lowestUSDPurchasePrint(double firstBank, double secondBank, double thirdBank, double fourBank) {
+        double[] usdBuyList = {firstBank, secondBank, thirdBank, fourBank};
+        Arrays.sort(usdBuyList);
+        log.info("The lowest pushare rate is: {}" , usdBuyList[0]);
+
+    }
+
+    public void highestSellingRatePrint(double firstBank, double secondBank, double thirdBank, double fourBank, double fifthBank) {
         double[] usdSellList = {firstBank, secondBank, thirdBank, fourBank, fifthBank};
         Arrays.sort(usdSellList);
-        System.out.println("The highest selling rate is: " + usdSellList[usdSellList.length - 1]);
+        log.info("The highest selling rate is: {}" , usdSellList[usdSellList.length - 1]);
     }
 }

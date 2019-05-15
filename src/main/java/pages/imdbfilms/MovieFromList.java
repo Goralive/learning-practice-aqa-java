@@ -133,8 +133,13 @@ public class MovieFromList extends AbstractPage {
 
     public void getSimilarFilms() {
         log.info("Names of the 3 similar films: ");
-        for (int i = 1; i <= 3; i++) {
-            log.info("{}. {} ", i, listOfSimilarfilms.get(i).getAttribute("title"));
+        if (assertThat(listOfSimilarfilms) != null) {
+            for (int i = 1; i <= 3; i++) {
+                log.info("{}. {} ", i, listOfSimilarfilms.get(i).getAttribute("title"));
+            }
+
+        } else {
+            log.info("No similar films");
         }
     }
 }

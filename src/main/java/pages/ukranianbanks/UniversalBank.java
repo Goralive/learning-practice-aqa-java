@@ -15,7 +15,8 @@ public class UniversalBank extends AbstractPage {
     @FindBy(css = " tr:nth-child(2) > td:nth-child(3)")
     WebElement usdSellCurrencyMono;
 
-    private double usdMonoBuy, usdMonoSell;
+    private double usdMonoBuy;
+    private double usdMonoSell;
 
     public double getUsdMonoBuy() {
         return usdMonoBuy;
@@ -29,8 +30,8 @@ public class UniversalBank extends AbstractPage {
         driver.get("https://www.universalbank.com.ua/");
         usdMonoBuy = Double.valueOf(usdBuyCurrencyMono.getText());
         usdMonoSell = Double.valueOf(usdBuyCurrencyMono.getText());
-        log.info("Get USD ukranianbanks from MonoBank buy: " + usdMonoBuy);
-        log.info("Get USD ukranianbanks from MonoBank sell: " + usdMonoSell);
+        log.info("Get USD ukranianbanks from MonoBank buy: {}" , usdMonoBuy);
+        log.info("Get USD ukranianbanks from MonoBank sell: {}" , usdMonoSell);
         log.info("-----------");
     }
 }

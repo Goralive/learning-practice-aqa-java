@@ -17,7 +17,8 @@ public class UkrSibBank extends AbstractPage {
     @FindAll(@FindBy(css = "table.currency__table tbody td"))
     private List<WebElement> usdCurrencySibList;
 
-    private double usdUrkSibBuy, usdUrkSibSell;
+    private double usdUrkSibSell;
+    private double usdUrkSibBuy;
 
     public double getUsdUrkSibBuy() {
         return usdUrkSibBuy;
@@ -32,8 +33,8 @@ public class UkrSibBank extends AbstractPage {
         usdUrkSibBuy = Double.valueOf(usdCurrencySibList.get(1).getText());
         usdUrkSibSell = Double.valueOf(usdCurrencySibList.get(2).getText());
 
-        log.info("Get USD ukranianbanks from UrkSib buy: " + usdUrkSibBuy);
-        log.info("Get USD ukranianbanks from UrkSib sell: " + usdUrkSibSell);
+        log.info("Get USD ukranianbanks from UrkSib buy: {}" , usdUrkSibBuy);
+        log.info("Get USD ukranianbanks from UrkSib sell: {}" , usdUrkSibSell);
         log.info("-----------");
     }
 }

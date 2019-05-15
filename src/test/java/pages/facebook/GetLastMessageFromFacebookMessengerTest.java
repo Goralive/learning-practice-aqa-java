@@ -1,6 +1,7 @@
 package pages.facebook;
 
 import core.WebDriverTestBase;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 

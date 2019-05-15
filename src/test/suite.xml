@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" verbose="1">
+    <test name="facebook">
+        <packages>
+            <package name="pages.facebook"/>
+        </packages>
+    </test>
+    <test name="imdb information">
+        <packages>
+            <package name="pages.imdbfilms"/>
+        </packages>
+    </test>
+    <test name="ukranian banks currency">
+        <packages>
+            <package name="pages.ukranianbanks"/>
+        </packages>
+    </test>
+</suite>

@@ -26,7 +26,7 @@ public class FacebookUserPage extends AbstractPage {
         try {
             wait.until(ExpectedConditions.visibilityOf(postField));
         } catch (TimeoutException e) {
-            log.info("Locator isn't visible: " + e);
+            log.info("Locator isn't visible: {}" , e);
         }
         return true;
     }
@@ -35,7 +35,7 @@ public class FacebookUserPage extends AbstractPage {
         wait.until(ExpectedConditions.elementToBeClickable(messangerBtn));
         messangerBtn.click();
         wait.until(ExpectedConditions.visibilityOf(friendsMessages));
-        log.info("The first message from messenger is: " + friendsMessages.getText());
+        log.info("The first message from messenger is: {}" , friendsMessages.getText());
 
         return new FacebookUserPage(driver);
     }
