@@ -28,7 +28,6 @@ public class MovieInformationFromIMDBTest extends WebDriverTestBase {
     @Test
     public void getInformation() {
         informationFromIMDB = new MovieInformationFromIMDB(driver);
-
         informationFromIMDB.openIMDB250Url("https://www.imdb.com/chart/top");
         MovieFromList movie = informationFromIMDB.getMovieName(0);
         movie.getReleaseDate();

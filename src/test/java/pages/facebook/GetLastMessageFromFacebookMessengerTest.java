@@ -1,9 +1,9 @@
 package pages.facebook;
 
 import core.WebDriverTestBase;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import static org.assertj.core.api.Assertions.*;
 
 public class GetLastMessageFromFacebookMessengerTest extends WebDriverTestBase {
 
@@ -27,8 +27,9 @@ public class GetLastMessageFromFacebookMessengerTest extends WebDriverTestBase {
     public void getLastMessage() {
         facebookLoginPage = new FacebookLoginPage(driver);
         facebookLoginPage.openFacebookLogIn("https://www.facebook.com");
+        assertThat(facebookLoginPage.isPageLoaded()).isTrue();
         FacebookUserPage facebookUserPage = facebookLoginPage.enterCredsForFacebookAccount("will14ka@gmail.com", "QA14DAXX");
-        facebookUserPage.profileLoading();
+        assertThat(facebookUserPage.isPageLoaded()).isTrue();
         facebookUserPage.getLastMessege();
     }
 }

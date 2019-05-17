@@ -22,22 +22,22 @@ public class FacebookUserPage extends AbstractPage {
         super(driver);
     }
 
-    public boolean profileLoading() {
+    public boolean isPageLoaded() {
         try {
             wait.until(ExpectedConditions.visibilityOf(postField));
         } catch (TimeoutException e) {
-            log.info("Locator isn't visible: {}" , e);
+            log.info("Locator of the post field isn't visible: {}", e.fillInStackTrace());
         }
-        return true;
+        return postField.isDisplayed()
+                && messangerBtn.isDisplayed()
+                && driver.getTitle().toLowerCase().contains("facebook");
     }
 
-    public FacebookUserPage getLastMessege() {
+    public void getLastMessege() {
         wait.until(ExpectedConditions.elementToBeClickable(messangerBtn));
         messangerBtn.click();
         wait.until(ExpectedConditions.visibilityOf(friendsMessages));
-        log.info("The first message from messenger is: {}" , friendsMessages.getText());
-
-        return new FacebookUserPage(driver);
+        log.info("The first message from messenger is: {}", friendsMessages.getText());
     }
 }
 

@@ -25,8 +25,8 @@ public class FacebookLoginPage extends AbstractPage {
 
     public void openFacebookLogIn(String url) {
         driver.get(url);
-        assertThat(driver.getTitle().toLowerCase().contains("facebook")).isTrue();
     }
+
     public FacebookUserPage enterCredsForFacebookAccount(String mail, String pass) {
         emailField.clear();
         emailField.sendKeys(mail);
@@ -34,6 +34,13 @@ public class FacebookLoginPage extends AbstractPage {
         passwordField.sendKeys(pass);
         logInButton.click();
         return new FacebookUserPage(driver);
+    }
 
+    public boolean isPageLoaded() {
+        return emailField.isDisplayed()
+                && passwordField.isDisplayed()
+                && logInButton.isDisplayed()
+                && driver.getTitle().toLowerCase().contains("facebook")
+                && driver.getCurrentUrl().toLowerCase().contains("facebook");
     }
 }

@@ -16,4 +16,9 @@
             <package name="pages.ukranianbanks"/>
         </packages>
     </test>
+    <test name="liniakino">
+        <packages>
+            <package name="pages.liniakino"></package>
+        </packages>
+    </test>
 </suite>
