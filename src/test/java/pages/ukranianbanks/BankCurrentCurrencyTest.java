@@ -39,6 +39,4 @@ public class BankCurrentCurrencyTest extends WebDriverTestBase {
         currencyCalculation.lowestUSDPurchasePrint(privatBank.getUsdPrivatBuy(), ukrSibBank.getUsdUrkSibBuy(), universalBank.getUsdMonoBuy(), oshadBank.getUsdOshadBuy());
 
     }
-
-
 }

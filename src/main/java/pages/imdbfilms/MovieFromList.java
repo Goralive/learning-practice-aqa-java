@@ -1,5 +1,6 @@
 package pages.imdbfilms;
 
+import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -59,54 +60,53 @@ public class MovieFromList extends AbstractPage {
     private int numberOfUserReview;
     private int numberOfCriticsReview;
 
-    public void getReleaseDate() {
+    public boolean getReleaseDate() {
         wait.until(ExpectedConditions.visibilityOf(webElementTitleOverview));
         log.info("Release date: {}", webElementTitleYear.getText());
-        assertThat(webElementTitleYear.isDisplayed());
+        return webElementTitleYear.isDisplayed();
     }
 
-    public void getDuration() {
-        assertThat(webElementDuration.isDisplayed());
+    public boolean getDuration() {
         int duration = Integer.parseInt(webElementDuration.getText().replaceAll("\\D+", ""));
         log.info("Duration in minutes: {}", duration);
         log.info("Duration in seconds: {}", duration * 60);
+        return webElementDuration.isDisplayed();
     }
 
-    public void getMovieRating() {
-        assertThat(webElementMovieRating.isDisplayed());
+    public boolean getMovieRating() {
         log.info("Movie rating: {}", webElementMovieRating.getText());
+        return webElementMovieRating.isDisplayed();
     }
 
-    public void getGenre() {
-        assertThat(webElementGenre.isDisplayed());
+    public boolean getGenre() {
         log.info("Genre: {}", webElementGenre.getText());
+        return webElementGenre.isDisplayed();
     }
 
-    public void getURLTrailer() {
-        assertThat(webElementTrailer.isDisplayed());
+    public boolean getURLTrailer() {
         log.info("Link to the movie trailer: {}", webElementTrailer.getAttribute("href"));
+        return webElementTrailer.isDisplayed();
     }
 
-    public void getUrlPoster() {
-        assertThat(webElementPoster.isDisplayed());
+    public boolean getUrlPoster() {
         log.info("Link to the movie poster: {}", webElementPoster.getAttribute("href"));
+        return webElementPoster.isDisplayed();
     }
 
-    public void getFilmDirectors() {
-        assertThat(webElementFilmDirector.isDisplayed());
+    public boolean getFilmDirectors() {
         log.info("Film directors: {}", webElementFilmDirector.getText());
+        return webElementFilmDirector.isDisplayed();
     }
 
     public void getFiveActors() {
-        if (assertThat(webElementGetFiveActors) != null) {
+        if (webElementGetFiveActors != null) {
             log.info("Here is the five actors: ");
             for (int i = 1; i <= 5; i++) {
                 log.info("{}. {}", i, webElementGetFiveActors.get(i).getText());
             }
 
         } else {
-            log.info("No actors was found");
-
+            log.info("No element is present");
         }
     }
 
@@ -137,7 +137,6 @@ public class MovieFromList extends AbstractPage {
             for (int i = 1; i <= 3; i++) {
                 log.info("{}. {} ", i, listOfSimilarfilms.get(i).getAttribute("title"));
             }
-
         } else {
             log.info("No similar films");
         }

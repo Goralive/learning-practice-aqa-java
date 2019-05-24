@@ -3,6 +3,8 @@ package pages.imdbfilms;
 import core.WebDriverTestBase;
 import org.testng.annotations.Test;
 
+import static org.assertj.core.api.Assertions.*;
+
 
 public class MovieInformationFromIMDBTest extends WebDriverTestBase {
     /**
@@ -30,12 +32,12 @@ public class MovieInformationFromIMDBTest extends WebDriverTestBase {
         informationFromIMDB = new MovieInformationFromIMDB(driver);
         informationFromIMDB.openIMDB250Url("https://www.imdb.com/chart/top");
         MovieFromList movie = informationFromIMDB.getMovieName(0);
-        movie.getReleaseDate();
-        movie.getDuration();
-        movie.getMovieRating();
-        movie.getGenre();
-        movie.getURLTrailer();
-        movie.getUrlPoster();
+        assertThat(movie.getReleaseDate()).isTrue();
+        assertThat(movie.getDuration()).isTrue();
+        assertThat(movie.getMovieRating()).isTrue();
+        assertThat(movie.getGenre()).isTrue();
+        assertThat(movie.getURLTrailer()).isTrue();
+        assertThat(movie.getUrlPoster()).isTrue();
         movie.getFilmDirectors();
         movie.getFiveActors();
         movie.getMetaScore();
