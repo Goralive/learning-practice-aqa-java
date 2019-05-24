@@ -1,6 +1,7 @@
 package pages.liniakino;
 
 import core.WebDriverTestBase;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CinemaSeatsCalculationTest extends WebDriverTestBase {
@@ -26,9 +27,13 @@ public class CinemaSeatsCalculationTest extends WebDriverTestBase {
 
     private LiniaKinoCinema liniaKinoCinema;
 
+    @BeforeMethod
+    public void setUpPage(){
+        liniaKinoCinema = new LiniaKinoCinema(driver);
+    }
+
     @Test
     public void numberOfSeatsInCinema() {
-        liniaKinoCinema = new LiniaKinoCinema(driver);
         liniaKinoCinema.mainPage("http://liniakino.com/showtimes/aladdin/");
         SchemeOfHall hall =  liniaKinoCinema.openFistActualMovie();
         hall.chooseTheMovieSession();

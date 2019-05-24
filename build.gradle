@@ -25,6 +25,7 @@ dependencies {
 test {
     useTestNG(){
         useDefaultListeners = true
+        testLogging.showStandardStreams = true
         suites 'src/test/suite.xml'
     }
 }

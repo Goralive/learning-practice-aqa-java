@@ -9,7 +9,8 @@ import org.slf4j.LoggerFactory;
 
 
 public abstract class AbstractPage extends WebDriverTestBase {
-
+    protected WebDriver driver;
+    protected WebDriverWait wait;
     protected final Logger log;
 
     protected AbstractPage(WebDriver driver) {

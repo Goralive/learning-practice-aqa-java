@@ -1,6 +1,7 @@
 package pages.ukranianbanks;
 
 import core.WebDriverTestBase;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BankCurrentCurrencyTest extends WebDriverTestBase {
@@ -21,15 +22,19 @@ public class BankCurrentCurrencyTest extends WebDriverTestBase {
     private NationalBank nationalBank;
     private CurrencyCalculation currencyCalculation;
 
-
-    @Test
-    public void sellingRates() {
+    @BeforeMethod
+    public void setUpPages() {
         privatBank = new PrivatBank(driver);
         ukrSibBank = new UkrSibBank(driver);
         universalBank = new UniversalBank(driver);
         oshadBank = new OshadBank(driver);
         nationalBank = new NationalBank(driver);
         currencyCalculation = new CurrencyCalculation();
+    }
+
+
+    @Test
+    public void sellingRates() {
         privatBank.getUSDCurrencyValue();
         ukrSibBank.getUSDCurrencyValue();
         universalBank.getUSDCurrencyValue();

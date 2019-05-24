@@ -1,6 +1,7 @@
 package pages.imdbfilms;
 
 import core.WebDriverTestBase;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -27,9 +28,13 @@ public class MovieInformationFromIMDBTest extends WebDriverTestBase {
 
     private MovieInformationFromIMDB informationFromIMDB;
 
+    @BeforeMethod
+    public void setUpPage(){
+        informationFromIMDB = new MovieInformationFromIMDB(driver);
+    }
+
     @Test
     public void getInformation() {
-        informationFromIMDB = new MovieInformationFromIMDB(driver);
         informationFromIMDB.openIMDB250Url("https://www.imdb.com/chart/top");
         MovieFromList movie = informationFromIMDB.getMovieName(0);
         assertThat(movie.getReleaseDate()).isTrue();
