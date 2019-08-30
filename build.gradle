@@ -1,17 +1,16 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
 group 'seleniumschool'
 version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
 
 repositories {
     mavenCentral()
-    jcenter()
 }
-
-
-apply plugin: 'java'
-apply plugin: 'idea'
-
-sourceCompatibility = 1.8
-
 
 dependencies {
     compile group: 'org.testng', name: 'testng', version: '6.14.3'
@@ -22,11 +21,12 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
 }
+
 test {
-    useTestNG(){
+    useTestNG() {
         useDefaultListeners = true
         testLogging.showStandardStreams = true
-        suites 'src/test/suite.xml'
+        suites 'src/test/java/resources/suite.xml'
     }
 }
 gradle.startParameter.continueOnFailure = true 
